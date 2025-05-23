@@ -79,7 +79,7 @@
 
                         <!-- Ciudad -->
                         <div class="container-fixture-city">
-                            <span>' . htmlspecialchars($team['city']) . '</span>
+                            <span>' . htmlspecialchars($team['date']) . '</span>
                         </div>
                     </div>'; 
                 }

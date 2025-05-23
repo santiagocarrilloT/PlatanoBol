@@ -224,12 +224,14 @@
     align-items: center;
     flex-direction: column;
     height: fit-content;
-    background-color:rgb(90, 90, 90);
+    background-color:rgb(23, 28, 37);
     width: 100%;
     padding: 10px;
     gap: 20px;
     border-radius: 16px;
     box-sizing: border-box;
+    color: white;
+    font-weight: 500;
   }
 
   .container-fixture-stadium-competition{
@@ -246,7 +248,7 @@
     justify-content: space-between;
     align-items: center;
     text-align: left;
-    padding: 0;
+    padding: 0px 5px 0px 5px;
     margin: 0;
     width: 100%;
   }
@@ -260,7 +262,7 @@
 
   .container-fixture-result-team-local{
     display: inline-flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     width: 50%;
     gap: 5px;
@@ -269,7 +271,7 @@
   .container-fixture-result-team-visitor{
     display: inline-flex;
     width: 50%;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
     text-align: right;
     gap: 5px;

@@ -1,7 +1,7 @@
 <div id="containerSearch"  class="container-search">
     <div class="container-search-bar">
         <div class="form-search" action="">
-            <span class="material-icons">search</span>
+            <span class="material-icons-">search</span>
             <input onkeyup="searchTeamsLeague(this.value, '<?php echo $url; ?>');" type="text" id="search_team" name="search_team" placeholder="Buscar...">
         </div>
     </div>

@@ -1,8 +1,8 @@
-<div onclick="toggleDetails('details_penalty')" class="container-parent-details">
+<div onclick="toggleDetails('details_penalty', 'expandedPenalty')" class="container-parent-details">
     <!-- Contenedor del botón desplegable -->
     <div class="container-init-details">
         <span>Penaltis</span>
-        <button class="button-points"><span class="material-icons">arrow_drop_down</span></button>
+        <button class="button-points"><span id="expandedPenalty" class="material-symbols-outlined">arrow_drop_down</span></button>
     </div>
 
     <!-- Contenedor de los detalles -->

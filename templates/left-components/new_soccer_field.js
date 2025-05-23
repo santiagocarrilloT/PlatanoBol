@@ -10,7 +10,7 @@ class NewSoccerField extends HTMLElement {
   static get styles() {
     return /*css*/ `
         :host {
-            --gradient: conic-gradient(#196915 90deg, #168613 0 180deg, #196915 0 270deg, #168613 0);
+            --gradient: conic-gradient(#196915 2700deg, #168615 0 270deg, #196915 0 270deg, #168613 0);
             --border-color: #fff;
             --circle-size: 90px;
             --player-color: #fff;
@@ -19,13 +19,13 @@ class NewSoccerField extends HTMLElement {
             width: 100%;
             height: 200px;
             display: flex;
-            justify-content: center;  
+            justify-content: center;
+            aspect-ratio: 5/3;
         }
 
         .stadium {
-            width: 70%;
+            width: 100%;
             height: 100%;
-            border: 1px solid #fff;
             background: var(--gradient);
             background-size: 67px 67px;
             box-shadow: 
@@ -158,13 +158,14 @@ class NewSoccerField extends HTMLElement {
         
         .dropzone {
             display: inline-block;
-            width: 100%;
-            height: 100%;
-            border: 1px dashed rgba(214, 214, 214, 0.7);
-            background-color: rgba(92, 92, 92, 0.45);
             justify-content: center;
             align-items: center;
-            position: relative;
+            width: 100%;
+            height: 100%;
+            border: 1px dashed rgba(214, 214, 214, 0.2);
+            background-color: rgba(92, 92, 92, 0.18);
+            justify-content: center;
+            align-items: center;
             overflow: hidden;
         }
 
@@ -207,7 +208,6 @@ class NewSoccerField extends HTMLElement {
             <div id="alineacion" class="home lineup-1">
 
                 <div class="dropzone" dropzone="copy">
-                    <soccer-field-player id="1" number="1"></soccer-field-player>
                 </div>
                 <div class="dropzone" dropzone="copy">
                     <soccer-field-player id="2" number="2"></soccer-field-player>
@@ -239,6 +239,7 @@ class NewSoccerField extends HTMLElement {
                 <div class="dropzone" dropzone="copy">
                     <soccer-field-player id="11" number="11"></soccer-field-player>
                 </div>
+
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
@@ -249,6 +250,7 @@ class NewSoccerField extends HTMLElement {
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
+                
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
@@ -261,6 +263,7 @@ class NewSoccerField extends HTMLElement {
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
+               
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
@@ -272,6 +275,7 @@ class NewSoccerField extends HTMLElement {
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
+                
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
@@ -283,6 +287,10 @@ class NewSoccerField extends HTMLElement {
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
+                
+                <div class="dropzone" dropzone="copy">
+                    <soccer-field-player id="1" number="1"></soccer-field-player>
+                </div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
@@ -292,6 +300,7 @@ class NewSoccerField extends HTMLElement {
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
+                
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
@@ -304,6 +313,7 @@ class NewSoccerField extends HTMLElement {
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
+                
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
@@ -315,6 +325,7 @@ class NewSoccerField extends HTMLElement {
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
+                
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
@@ -327,6 +338,7 @@ class NewSoccerField extends HTMLElement {
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
+                
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
@@ -338,6 +350,7 @@ class NewSoccerField extends HTMLElement {
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
+
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
@@ -348,7 +361,7 @@ class NewSoccerField extends HTMLElement {
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
-                <div class="dropzone" dropzone="copy"></div>
+                
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>
                 <div class="dropzone" dropzone="copy"></div>

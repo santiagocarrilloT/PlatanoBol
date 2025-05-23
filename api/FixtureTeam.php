@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 class FixtureTeam{
     
-    function __construct(public string $local_team, public string $local_team_logo, public string $visitor_team, public string $visitor_team_logo, public int $result_local, public int $result_visitor, public string $stadium, public string $competition, public string $city, public string $date, public string $time, public string $league_logo)
+    function __construct(public string $id_local_team, public string $local_team, public string $local_team_logo, public string $id_visitor_team ,public string $visitor_team, public string $visitor_team_logo, public int $result_local, public int $result_visitor, public string $stadium, public string $competition, public string $city, public string $date, public string $time, public string $league_logo)
     {
+        $this->id_local_team = $id_local_team;
         $this->local_team = $local_team;
         $this->local_team_logo = $local_team_logo;
+        $this->id_visitor_team = $id_visitor_team;
         $this->visitor_team = $visitor_team;
         $this->visitor_team_logo = $visitor_team_logo;
         $this->result_local = $result_local;
@@ -41,8 +43,10 @@ class FixtureTeam{
 
         foreach ($data["response"] as $info){
             $fixture_team[] = new self (
+                $info["teams"]["home"]["id"],
                 $info["teams"]["home"]["name"],
                 $info["teams"]["home"]["logo"],
+                $info["teams"]["away"]["id"],
                 $info["teams"]["away"]["name"],
                 $info["teams"]["away"]["logo"],
                 $info["goals"]["home"],
@@ -58,8 +62,10 @@ class FixtureTeam{
 
         $fixture_team = [
             new self(
+                "1127",
                 "Deportivo Cali",
                 "https://media.api-sports.io/football/teams/1127.png",
+                "1128",
                 "Independiente Medellín",
                 "https://media.api-sports.io/football/teams/1128.png",
                 2,
@@ -72,8 +78,10 @@ class FixtureTeam{
                 "https://media.api-sports.io/football/leagues/239.png"
             ), 
             new self(
+                "1127",
                 "Deportivo Cali",
                 "https://media.api-sports.io/football/teams/1127.png",
+                "1129",
                 "Envigado",
                 "https://media.api-sports.io/football/teams/1129.png",
                 1,
@@ -86,8 +94,10 @@ class FixtureTeam{
                 "https://media.api-sports.io/football/leagues/239.png"
             ),
             new self(
+                "1127",
                 "Deportivo Cali",
                 "https://media.api-sports.io/football/teams/1127.png",
+                "1130",
                 "Huila",
                 "https://media.api-sports.io/football/teams/1130.png",
                 3,
@@ -100,8 +110,10 @@ class FixtureTeam{
                 "https://media.api-sports.io/football/leagues/239.png"
             ),
             new self(
+                "1127",
                 "Deportivo Cali",
                 "https://media.api-sports.io/football/teams/1127.png",
+                "1131",
                 "Bucaramanga",
                 "https://media.api-sports.io/football/teams/1131.png",
                 0,

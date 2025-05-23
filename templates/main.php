@@ -45,11 +45,6 @@ $open_data = false;
             </div>
         </div>
     </main>
-    
-    <!-- Footer section -->
-    <footer>
-
-    </footer>
 </body>
 
 

@@ -1,8 +1,8 @@
-<div onclick="toggleDetails('details_points')" class="container-parent-details">
+<div onclick="toggleDetails('details_points', 'expandedPoints')" class="container-parent-details">
     <!-- Contenedor del botón desplegable -->
     <div class="container-init-details">
         <span>Puntos Totales</span>
-        <button class="button-points"><span class="material-icons">arrow_drop_down</span></button>
+        <button class="button-points"><span id="expandedPoints" class="material-symbols-outlined">arrow_drop_down</span></button>
     </div>
 
     <!-- Contenedor de los detalles -->

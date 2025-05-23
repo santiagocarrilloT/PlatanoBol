@@ -1,8 +1,8 @@
-<div onclick="toggleDetails('details_clean_sheet')" class="container-parent-details">
+<div onclick="toggleDetails('details_clean_sheet', 'expandedClean')" class="container-parent-details">
     <!-- Contenedor del botón desplegable -->
     <div class="container-init-details">
         <span>Porterías en Cero</span>
-        <button class="button-points"><span class="material-icons">arrow_drop_down</span></button>
+        <button class="button-points" ><span id="expandedClean" class="material-symbols-outlined">arrow_drop_down</span>
     </div>
 
     <!-- Contenedor de los detalles -->

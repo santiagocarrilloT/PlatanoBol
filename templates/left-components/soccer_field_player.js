@@ -8,6 +8,11 @@ class soccerFieldPlayer extends HTMLElement {
   static get styles() {
     return /*css*/ `
         :host {
+            display: flex;
+            width: auto;
+            height: auto;
+            justify-content: center;
+            align-items: center;
         }
 
         .player{

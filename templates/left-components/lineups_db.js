@@ -82,6 +82,8 @@ function verifyInputValue() {
   const input5 = document.getElementById("input5");
   input5.disabled = true;
 
+  const playersNumber = document.getElementById("countPlayer");
+
   var countPlayers = [0, 0, 0, 0, 0];
   document.addEventListener("input", function (e) {
     //Sumar los valores de los inputs
@@ -113,9 +115,10 @@ function verifyInputValue() {
     else if (e.target === input5) {
       countPlayers[4] = Number(input5.value);
     }
-
     //Restar los valores de los inputs
     var total = countPlayers.reduce((a, b) => a + b, 0);
+
+    playersNumber.innerText = total;
 
     //Validar el total de jugadores
     if (total === 10) {

@@ -1,8 +1,8 @@
-<div onclick="toggleDetails('details_streak')" class="container-parent-details">
+<div onclick="toggleDetails('details_streak', 'expandedStreak')" class="container-parent-details">
     <!-- Contenedor del botón desplegable -->
     <div class="container-init-details">
         <span>Rachas</span>
-        <button class="button-points"><span class="material-icons">arrow_drop_down</span></button>
+        <button class="button-points"><span id="expandedStreak" class="material-symbols-outlined">arrow_drop_down</span></button>
     </div>
 
     <!-- Contenedor de los detalles -->
