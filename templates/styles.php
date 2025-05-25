@@ -361,7 +361,7 @@
         gap: 20px;
         width: 100%;
     }
-    
+
     .container-results-all{
         display: inline-flex;
         justify-content: center;
@@ -460,6 +460,38 @@
         text-align: center;
     }
 
+    .tooltip-container {
+        display: inline-block;
+    }
+
+    .tooltip-text {
+        width:80px;
+        background-color:rgb(180, 180, 180);
+        color: #fff;
+        font-size: 11px;
+        text-align: center;
+
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        top: 100%; /* Posiciona el tooltip bajo del elemento */
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: 1000;
+
+        display: inline-flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .tooltip-container:hover .tooltip-text {
+        visibility: visible;
+        opacity: 1;
+    }
+
+
     .results-item-win,
     .results-item-degrade,
     .results-item-loss{
@@ -498,6 +530,8 @@
         transition: all 0.3s ease;
         cursor: pointer;
     }
+
+    
 
     /* Contenido Derecha */
     .container-right{
@@ -583,6 +617,7 @@
         border-radius: 16px;
         width: 100%;
         height: 100%;
+        
     }
 
     .container-new-lineup{
@@ -616,6 +651,7 @@
         flex-direction: column;
         align-items: center;
         width: 100%;
+
         margin: 0 auto;
         text-align: left;
         gap: 10px;

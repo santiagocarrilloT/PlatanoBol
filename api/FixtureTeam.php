@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 class FixtureTeam{
     
-    function __construct(public string $id_local_team, public string $local_team, public string $local_team_logo, public string $id_visitor_team ,public string $visitor_team, public string $visitor_team_logo, public int $result_local, public int $result_visitor, public string $stadium, public string $competition, public string $city, public string $date, public string $time, public string $league_logo)
+    function __construct(public int $id_local_team, public string $local_team, public string $local_team_logo, public int $id_visitor_team ,public string $visitor_team, public string $visitor_team_logo, public int $result_local, public int $result_visitor, public string $stadium, public string $competition, public string $city, public string $date, public string $time, public string $league_logo)
     {
         $this->id_local_team = $id_local_team;
         $this->local_team = $local_team;
@@ -21,7 +21,7 @@ class FixtureTeam{
     }
 
     static function data_fixture_curl(string $API_FOOTBALL_URL, string $API_KEY, string $API_HOST): array {
-        /* $curl = curl_init();
+        $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => $API_FOOTBALL_URL,
             CURLOPT_RETURNTRANSFER => true,
@@ -58,9 +58,9 @@ class FixtureTeam{
                 date("H:i:s", strtotime($info["fixture"]["date"])),
                 $info["league"]["logo"],
             );
-        } */
+        }
 
-        $fixture_team = [
+        /* $fixture_team = [
             new self(
                 "1127",
                 "Deportivo Cali",
@@ -125,7 +125,7 @@ class FixtureTeam{
                 date("H:i:s", strtotime("2023-10-22 18:00:00")),
                 "https://media.api-sports.io/football/leagues/239.png"
             )
-        ];
+        ]; */
         return $fixture_team;
     }
 

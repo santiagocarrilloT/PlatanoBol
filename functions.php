@@ -4,7 +4,7 @@
     
     require_once 'const.php';
 
-    function render_template(string $template, array $data = [], array $data_forms = []){
+    function render_template(string $template, array $data = [], array $data_forms = [], array $data_fixture = []){
        //Extrae variables del array asociativo
         extract($data);
         require "templates/$template.php";

@@ -37,27 +37,48 @@
             <!-- Cargar Resultados -->
              <div class="container-results-all-items" onclick="window.location.href='/templates/fixture-components/fixture.php';">
                 <?php
-                    $count = 1;
-                    foreach ($data_forms as $date) {
-                        switch ($date){
+                    $count = 0;
+                    foreach ($data_fixture as $fixture) {
+                        switch ($data_forms[$count]){
                             case "W":
                                 echo "<div class='container-result-item'>
-                                        <span >".$count."</span>
-                                        <div class='results-item-win' style='background-color: green;'><span class='material-symbols-outlined'>trophy</span></div>
+                                        <span >".($count+1)."</span>
+                                        <div class='results-item-win tooltip-container' style='background-color: green;'>
+                                            <span class='material-symbols-outlined'>trophy</span>
+                                            <abbr class='results-item-info tooltip-text'>
+                                                <span>" . $fixture["local_team"]. "</span>
+                                                <span>VS</span>
+                                                <span>" . $fixture["visitor_team"]. "</span>
+                                            </abbr>
+                                        </div>
                                     </div>";
                                 break;
 
                             case "D":
                                 echo "<div class='container-result-item'>
-                                        <span >".$count."</span>
-                                        <div class='results-item-degrade'><span class='material-symbols-outlined'>handshake</span></div>
+                                        <span >".($count+1)."</span>
+                                        <div class='results-item-degrade tooltip-container'>
+                                            <span class='material-symbols-outlined'>handshake</span>
+                                            <abbr class='results-item-info tooltip-text'>
+                                                <span>" . $fixture["local_team"]. "</span>
+                                                <span>VS</span>
+                                                <span>" . $fixture["visitor_team"]. "</span>
+                                            </abbr>
+                                        </div>
                                     </div>";
                                 break;
 
                             case "L":
                                 echo "<div class='container-result-item'>
-                                        <span >".$count."</span>
-                                        <div class='results-item-loss' style='background-color: red;'><span class='material-symbols-outlined'>stat_minus_2</span></div>
+                                        <span >".($count+1)."</span>
+                                        <div class='results-item-loss tooltip-container' style='background-color: red;'>
+                                            <span class='material-symbols-outlined'>stat_minus_2</span>
+                                            <abbr class='results-item-info tooltip-text'>
+                                                <span>" . $fixture["local_team"]. "</span>
+                                                <span>VS</span>
+                                                <span>" . $fixture["visitor_team"]. "</span>
+                                            </abbr>
+                                        </div>
                                     </div>";
                                 break;
 

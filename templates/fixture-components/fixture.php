@@ -10,7 +10,6 @@ try {
     if(isset($_COOKIE["team_info"])){
         $TEAM_CODE = json_decode($_COOKIE["team_info"], true);
         $API_FIXTURE_URL = get_API_FIXTURE_URL($TEAM_CODE, 2023);
-
         //Búsqueda de equipos
         $fixture_team = FixtureTeam::data_fixture_curl($API_FIXTURE_URL, $API_KEY, $API_HOST);
         $data_fixture = [];
@@ -20,7 +19,7 @@ try {
     }
 } catch (Exception $e) {
     echo "Error: " . $e->getMessage();
-} 
+}
 ?>
 
 <?php render_template_folder('head_fixture', 'fixture-components', $data_fixture); ?>

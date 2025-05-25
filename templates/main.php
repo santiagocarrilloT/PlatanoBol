@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 $open_data = false;
-
 ?>
 <body>
     <header class="header">
@@ -12,7 +11,7 @@ $open_data = false;
             <div class="container-nav-header">
                 <nav class="nav-header">
                     <ul>
-                        <a href="/templates/fixture-components/fixture.php">Partidos</a>
+                        <a href="templates/fixture-components/fixture.php">Partidos</a>
                         <a href="/templates/map-components/map.php">Mapa</a>
                     </ul>
                 </nav>

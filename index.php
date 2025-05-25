@@ -8,7 +8,9 @@
     require_once "./api/const.php";
     require_once "./api/Staticts.php";
 
-    /* if (isset($_GET["code"])){
+    require_once "./api/FixtureTeam.php";
+
+    if (isset($_GET["code"])){
         setcookie("team_info", json_encode($_GET["code"]), time() + (86400 * 30), "/"); // 86400 = 1 day
         setcookie("team_name", urlencode($_GET["name"]), time() + (86400 * 30), "/"); // 86400 = 1 day
         exit;
@@ -31,11 +33,27 @@
             $totalPoints = $team->get_total_points();
             //Datos de la liga
             $data_forms = str_split($data_team["form"]);
-        }
+
+            //Datos del Fixture
+            $API_FIXTURE_URL = get_API_FIXTURE_URL($TEAM_CODE, 2023);
+            $fixture_team = FixtureTeam::data_fixture_curl($API_FIXTURE_URL, $API_KEY, $API_HOST);
+
+            //Arreglo de datos del Fixture
+            $data_fixture = [];
+            foreach ($fixture_team as $data){
+                $data_fixture[] = $data->get_data();
+                }
+            }
     } catch (Exception $e) {
         echo "Error: " . $e->getMessage();
-    } */
+    }
 
+    /* $API_FIXTURE_URL = get_API_FIXTURE_URL($TEAM_CODE, 2023);
+    $fixture_team = FixtureTeam::data_fixture_curl($API_FIXTURE_URL, $API_KEY, $API_HOST);
+    $data_fixture = [];
+    foreach ($fixture_team as $data){
+        $data_fixture[] = $data->get_data();
+    }
     $totalPoints = ["positivePoints" => 30, "negativePoints" => 20];
     $data_team = [
         "team_name" => "Deportivo Cali",
@@ -240,13 +258,13 @@
             ]
         ],
     ];
-    $data_forms = explode(" ", $data_team["form"]);
+    $data_forms = explode(" ", $data_team["form"]); */
     
 ?>
 
 
 <?php render_template('head', $data_team); ?>
-<?php render_template('main', array_merge($data_team, $totalPoints), $data_forms); ?>
+<?php render_template('main', array_merge($data_team, $totalPoints), $data_forms, $data_fixture); ?>
 <?php render_template('styles');?>
 
 
