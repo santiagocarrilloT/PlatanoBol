@@ -20,10 +20,26 @@ function resetLineup() {
     input.disabled = false;
   }
 
+  formacionText = "";
+
   //Resetear el campo de formación
   const newLineup = document.getElementById("newSoccerField");
   let playerContentNew = newLineup.shadowRoot.querySelector(".players");
   playerContentNew.innerHTML = fieldLineup;
+
+  //Validar que el contador de jugadores sea 0
+  const countPlayers = document.getElementById("countPlayer");
+  countPlayers.innerText = 0;
+  validInputLineup = false;
+
+  //Color gris en contador de jugadores
+  const playersNumber = document.getElementById("countPlayer");
+  const player = document.getElementById("player");
+  const countTotal = document.getElementById("countTotal");
+
+  playersNumber.style.backgroundColor = "#acacac";
+  player.style.backgroundColor = "#acacac";
+  countTotal.style.backgroundColor = "#acacac";
 }
 
 /* Agregar información de alineaciones guardadas en BD  */
@@ -35,7 +51,6 @@ function formationInputsAdd(lineup_text) {
   const playersNumber = document.getElementById("countPlayer");
   const player = document.getElementById("player");
   const countTotal = document.getElementById("countTotal");
-
   /* Agregar la formación (4-4-2, 4-3-3, etc)*/
   for (let index = 0; index < lineup_text.length; index++) {
     document.getElementById("input" + (index + 1)).value = lineup_text[index];
@@ -47,7 +62,6 @@ function formationInputsAdd(lineup_text) {
       formacionText += lineup_text[index] + "-";
     }
   }
-
   //Validar que el input1 no sea mayor a 10
   countPlayers.innerText = 10;
   validInputLineup = true;
@@ -61,5 +75,4 @@ function formationInputsAdd(lineup_text) {
   countTotal.style.backgroundColor = "#ccffc4";
 
   get_lineup_id_edit(formacionText);
-  formacionText = "";
 }

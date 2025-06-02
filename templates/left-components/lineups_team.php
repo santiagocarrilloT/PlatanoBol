@@ -368,5 +368,5 @@ function render_fields ($lineups){
         $lineup_db = implode(",", $lineup_db);
         print_r("<div id='lineupArrayID' style='display: none;'> ". htmlspecialchars($lineup_db) ." </div>");
     ?>
-    
+    <script src="../../templates/left-components/movement_player.js"></script>
 </div>

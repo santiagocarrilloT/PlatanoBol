@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
+  eventDragandDrop();
+});
+
+function eventDragandDrop() {
   const soccerField = document.querySelector("new-soccer-field");
   const shadowRoot = soccerField.shadowRoot;
   const players = shadowRoot.querySelectorAll("soccer-field-player");
@@ -18,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
       e.target.appendChild(element);
     });
   });
-});
+}
 
 function getPlayer(players) {
   players.forEach((jugador) => {

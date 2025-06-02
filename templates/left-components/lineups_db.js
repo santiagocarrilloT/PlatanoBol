@@ -14,10 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   for (let ind = 0; ind < arrayLineup.length; ind++) {
     get_lineup(arrayLineup[ind].trim(), ind);
+    console.log("Obteniendo alineación:", arrayLineup[ind].trim());
   }
-
-  //get_lineup();
-  verifyInputValue();
+  //verifyInputValue();
   save_lineup();
 });
 
@@ -39,7 +38,9 @@ function get_lineup(lineupForm, ind) {
 
       elemento = JSON.parse(data);
 
+      //Seleccionar el campo de fútbol
       let playerContent = lineup.shadowRoot.querySelector(".players");
+      //Agregar la alineación al campo de fútbol
       playerContent.innerHTML = elemento[0]["lineup_form"];
     },
   });
@@ -47,25 +48,26 @@ function get_lineup(lineupForm, ind) {
 
 function get_lineup_id_edit(formationGet) {
   const data = { lineup_formation: formationGet };
-
   $.ajax({
     type: "GET",
     url: "/controller/lineup.php",
     data: data,
-    success: function (data) {
-      if (data.trim() === "" || data === "[]") {
+    success: function (infoDb) {
+      if (infoDb.trim() === "" || infoDb === "[]") {
         return `<div class="team-result"><span>No se encontraron resultados</span></div>`;
       }
 
       /* Editar Alineación */
       const newLineup = document.getElementById("newSoccerField");
 
-      //Guardar el estado inicial del campo de fútbol
-      fieldLineup = newLineup.shadowRoot.querySelector(".players").innerHTML;
+      elemento = JSON.parse(infoDb);
 
       //Agregar la alineación al campo de fútbol
       let playerContentNew = newLineup.shadowRoot.querySelector(".players");
       playerContentNew.innerHTML = elemento[0]["lineup_form"];
+
+      //Asignar de nuevo los eventos
+      eventDragandDrop();
     },
   });
 }
@@ -106,7 +108,7 @@ function selectInputKey() {
   });
 }
 
-function verifyInputValue() {
+/*function verifyInputValue() {
   const input1 = document.getElementById("input1");
   const input2 = document.getElementById("input2");
   input2.disabled = true;
@@ -170,7 +172,6 @@ function verifyInputValue() {
       countTotal.style.backgroundColor = "#ccffc4";
 
       validInputLineup = true;
-      formacionText = "";
       countPlayers.forEach((element) => {
         if (element != 0) formacionText += element + "-";
       });
@@ -179,6 +180,8 @@ function verifyInputValue() {
       if (formacionText[formacionText.length - 1] == "-") {
         formacionText = formacionText.slice(0, -1);
       }
+
+      console.log("Formación:", formacionText);
     } else {
       validInputLineup = false;
 
@@ -188,11 +191,10 @@ function verifyInputValue() {
       countTotal.style.backgroundColor = "#ffbbbb";
     }
   });
-}
+}*/
 
 function save_lineup() {
   const saveButton = document.getElementById("buttonSaveLineup");
-
   saveButton.addEventListener("click", function () {
     if (validInputLineup) {
       const componenteSoccerField = document.querySelector("new-soccer-field");
@@ -203,7 +205,6 @@ function save_lineup() {
         lineup_form: formacionText,
         lineup_component: alineacion.outerHTML,
       };
-
       $.ajax({
         type: "GET",
         url: "/controller/lineup.php",

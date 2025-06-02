@@ -20,9 +20,16 @@ if(isset($_GET["lineup_formation"])){
 
 //Guardar la alinación de un equipo
 if(isset($_GET["lineup_form"])){
-    $lineup->save_lineup($_GET["lineup_form"], $_GET["lineup_component"]);
-    if($lineup) {
-    echo json_encode(["success" => "Alineación guardada correctamente"]);
+    $data_form_lineup = $lineup->valid_existing_lineup($_GET["lineup_form"]);
+    
+    if($data_form_lineup){
+        $lineup->update_lineup($_GET["lineup_form"], $_GET["lineup_component"]);
+        echo json_encode(["success" => "Alineacion actualizada correctamente"]);
+        exit;
+    } else {
+        $lineup->save_lineup($_GET["lineup_form"], $_GET["lineup_component"]);
+        echo json_encode(["success" => "Alineacion guardada correctamente"]);
+        exit;
     }
 }
 ?>
