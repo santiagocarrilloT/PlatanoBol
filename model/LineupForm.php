@@ -7,7 +7,7 @@ class LineupForm extends Connection {
     public function get_lineup($lineup_text){
         $conectar = parent::conexion();
         parent::set_Names();
-        $sql = "SELECT lineup_form FROM lineups WHERE lineup_team = ?";
+        $sql = "SELECT user_id, lineup_form FROM lineups WHERE lineup_team = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $lineup_text);
         $sql->execute();
@@ -15,6 +15,18 @@ class LineupForm extends Connection {
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($result);
         
+    }
+
+    public function get_lineup_formation($lineup_text){
+        $conectar = parent::conexion();
+        parent::set_Names();
+        $sql = "SELECT user_id, lineup_form FROM lineups WHERE lineup_team = ?";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $lineup_text);
+        $sql->execute();
+
+        $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($result);
     }
 
     public function save_lineup($lineup_form, $lineup_component){

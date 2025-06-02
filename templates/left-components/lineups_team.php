@@ -1,6 +1,15 @@
 <?php
 
+/**
+ * Renderiza las alineaciones de un equipo.
+ *
+ * @param array $lineups Array de alineaciones del equipo.
+ * @return void
+ */
 function render_fields ($lineups){
+    global $lineup_db;
+    $lineup_db = [];
+    $count = 0;
     foreach ($lineups as $formation){
         switch ($formation["formation"]) {
             case '4-2-3-1':
@@ -117,9 +126,8 @@ function render_fields ($lineups){
                     ">
                     </soccer-field>
                 </div>';
-                break;
-                
-            case '3-4-3':
+                break;       
+            /* case '3-4-3':
                 $formationHTML = '
                 <div class="container-lineup-form">
                     <div class="container-lineup-text">
@@ -147,7 +155,7 @@ function render_fields ($lineups){
                     </soccer-field>
                 </div>';
                 break;
-                
+                */ 
             case '4-4-1-1':
                 $formationHTML = '
                 <div class="container-lineup-form">
@@ -177,7 +185,7 @@ function render_fields ($lineups){
                 </div>';
                 break;
                 
-            case '3-4-2-1':
+            /* case '3-4-2-1':
                 $formationHTML = '
                 <div class="container-lineup-form">
                     <div class="container-lineup-text">
@@ -205,7 +213,7 @@ function render_fields ($lineups){
                     </soccer-field>
                 </div>';
                 break;
-            
+             */
             case '4-3-2-1':
                 $formationHTML = '
                 <div class="container-lineup-form">
@@ -237,9 +245,19 @@ function render_fields ($lineups){
             
                 // Caso por defecto (por si no hay coincidencia con las formaciones disponibles)
             default:
+                array_push($lineup_db, $formation["formation"]);
+
+                $sizeText = strlen($formation["formation"]);
+                $formationText = "";
+                for ($i=0; $i < $sizeText; $i++) {
+                    if($formation["formation"][$i] != "-"){
+                        $formationText .= $formation["formation"][$i];
+                    } 
+                    
+                }
                 $formationHTML = '
                 <div class="container-lineup-form">
-                    <div class="container-lineup-text">
+                    <div class="container-lineup-text-add">
                         <div class="lineup-text">
                             <span>Alineación:</span>
                             <span>' . $formation["formation"] . '</span>
@@ -249,14 +267,20 @@ function render_fields ($lineups){
                             <span>' . $formation["played"] .'</span>
                         </div>
                     </div>
-                    <soccer-field-db lineupsForm=' . $formation["formation"] .' id="lineupField"></soccer-field-db>
+                    <soccer-field-db lineupsForm=' . $formation["formation"] .' id="lineupField'. $count .'"></soccer-field-db>
+                    <div class="container-lineup-add">
+                        <button id="openModalLineup'. $count .'" class="button-add-lineup" onclick="formationInputsAdd(\'' . $formationText . '\') ">
+                            <div><span class="material-symbols-outlined">edit</span></div>
+                            <div>Editar</div>
+                        </button>
+                    </div>
                 </div>';
+                $count++;
                 break;
         };
         echo $formationHTML;
     }
 }
-
 ?>
 
 
@@ -266,14 +290,14 @@ function render_fields ($lineups){
         <h3>Alineaciones Utilizadas</h3>
         <button id="openModalBtn" class="new-lineup">+</button>
         <div id="modalNewLineup" class="div-new-lineup">
-            <section class="modal-lineup">
+            <div class="modal-lineup">
                 <div class="modal-lineup-content">
                     
                     <!-- Header -->
                     <div class="modal-lineup-header">
                         <!-- Botón Salir -->
-                        <div class="container-modal-close">
-                            <div id="closeModalBtn" class="close-modal-lineup"><span>x</span></div>
+                        <div id="closeModalBtn" onclick="resetLineup()" class="container-modal-close">
+                            <div class="close-modal-lineup"><span>x</span></div>
                         </div>
                         <!-- Título -->
                         <div class="modal-lineup-title">
@@ -295,9 +319,9 @@ function render_fields ($lineups){
                             <div class="container-form-lineup-example">
                                 <span>Total Jugadores:</span>
                                 <div class="input-new-lineup-example">
-                                    <span id="countPlayer">0</span>
-                                    <span>/</span>
-                                    <span>10</span>
+                                    <div id="countPlayer">0</div>
+                                    <div id="player">/</div>
+                                    <div id="countTotal">10</div>
                                 </div>
                             </div>
 
@@ -320,7 +344,7 @@ function render_fields ($lineups){
                             </div>
                             <!-- Nueva alineación -->
                              <div class="container-form-field-area">
-                                <new-soccer-field class="lineup-area"></new-soccer-field>
+                                <new-soccer-field id="newSoccerField" class="lineup-area"></new-soccer-field>
                              </div>
                             
                         </div>
@@ -333,11 +357,16 @@ function render_fields ($lineups){
                     </div>
                     
                 </div>
-            </section>
+            </div>
         </div>
     </div>
     
     <!-- Alineaciones Creadas -->
-    <?= render_fields($lineups); ?>
+    <?php
+        global $lineup_db;
+        render_fields($lineups); 
+        $lineup_db = implode(",", $lineup_db);
+        print_r("<div id='lineupArrayID' style='display: none;'> ". htmlspecialchars($lineup_db) ." </div>");
+    ?>
+    
 </div>
-

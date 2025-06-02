@@ -1,18 +1,27 @@
 let validInputLineup = false;
-formacionText = null;
+let validExistingLineup = false;
+let fieldLineup = "";
+let formacionText = "";
 document.addEventListener("DOMContentLoaded", function () {
+  const newLineup = document.getElementById("newSoccerField");
+  //Guardar el estado inicial del campo de fútbol
+  fieldLineup = newLineup.shadowRoot.querySelector(".players").innerHTML;
+
   selectInputKey();
-  get_lineup();
+
+  const lineupFormDB = document.getElementById("lineupArrayID");
+  arrayLineup = lineupFormDB.innerText.split(",");
+
+  for (let ind = 0; ind < arrayLineup.length; ind++) {
+    get_lineup(arrayLineup[ind].trim(), ind);
+  }
+
+  //get_lineup();
   verifyInputValue();
   save_lineup();
 });
 
-function get_lineup() {
-  if (!document.getElementById("lineupField")) return;
-  const lineupForm = document
-    .getElementById("lineupField")
-    .getAttribute("lineupsForm");
-
+function get_lineup(lineupForm, ind) {
   const data = { lineup_text: lineupForm };
 
   $.ajax({
@@ -21,16 +30,42 @@ function get_lineup() {
     data: data,
     success: function (data) {
       if (data.trim() === "" || data === "[]") {
-        playerContent.innerHTML = `<div class="team-result"><span>No se encontraron resultados</span></div>`;
+        `<div class="team-result"><span>No se encontraron resultados</span></div>`;
         return;
       }
 
-      const lineup = document.getElementById("lineupField");
+      /* Alineación Principal */
+      const lineup = document.getElementById("lineupField" + ind);
 
       elemento = JSON.parse(data);
 
       let playerContent = lineup.shadowRoot.querySelector(".players");
       playerContent.innerHTML = elemento[0]["lineup_form"];
+    },
+  });
+}
+
+function get_lineup_id_edit(formationGet) {
+  const data = { lineup_formation: formationGet };
+
+  $.ajax({
+    type: "GET",
+    url: "/controller/lineup.php",
+    data: data,
+    success: function (data) {
+      if (data.trim() === "" || data === "[]") {
+        return `<div class="team-result"><span>No se encontraron resultados</span></div>`;
+      }
+
+      /* Editar Alineación */
+      const newLineup = document.getElementById("newSoccerField");
+
+      //Guardar el estado inicial del campo de fútbol
+      fieldLineup = newLineup.shadowRoot.querySelector(".players").innerHTML;
+
+      //Agregar la alineación al campo de fútbol
+      let playerContentNew = newLineup.shadowRoot.querySelector(".players");
+      playerContentNew.innerHTML = elemento[0]["lineup_form"];
     },
   });
 }
@@ -83,6 +118,8 @@ function verifyInputValue() {
   input5.disabled = true;
 
   const playersNumber = document.getElementById("countPlayer");
+  const player = document.getElementById("player");
+  const countTotal = document.getElementById("countTotal");
 
   var countPlayers = [0, 0, 0, 0, 0];
   document.addEventListener("input", function (e) {
@@ -91,6 +128,11 @@ function verifyInputValue() {
       //Validar que el input1 no sea mayor a 10
       countPlayers[0] = Number(input1.value);
       input2.disabled = false;
+
+      //Color rojo
+      playersNumber.style.backgroundColor = "#ffbbbb";
+      player.style.backgroundColor = "#ffbbbb";
+      countTotal.style.backgroundColor = "#ffbbbb";
     }
 
     //Validar el input2
@@ -122,6 +164,11 @@ function verifyInputValue() {
 
     //Validar el total de jugadores
     if (total === 10) {
+      //Color verde
+      playersNumber.style.backgroundColor = "#ccffc4";
+      player.style.backgroundColor = "#ccffc4";
+      countTotal.style.backgroundColor = "#ccffc4";
+
       validInputLineup = true;
       formacionText = "";
       countPlayers.forEach((element) => {
@@ -134,12 +181,18 @@ function verifyInputValue() {
       }
     } else {
       validInputLineup = false;
+
+      //Color rojo
+      playersNumber.style.backgroundColor = "#ffbbbb";
+      player.style.backgroundColor = "#ffbbbb";
+      countTotal.style.backgroundColor = "#ffbbbb";
     }
   });
 }
 
 function save_lineup() {
   const saveButton = document.getElementById("buttonSaveLineup");
+
   saveButton.addEventListener("click", function () {
     if (validInputLineup) {
       const componenteSoccerField = document.querySelector("new-soccer-field");

@@ -465,7 +465,7 @@
     }
 
     .tooltip-text {
-        width:80px;
+        width:85px;
         background-color:rgb(180, 180, 180);
         color: #fff;
         font-size: 11px;
@@ -651,6 +651,7 @@
         flex-direction: column;
         align-items: center;
         width: 100%;
+        height: fit-content;
 
         margin: 0 auto;
         text-align: left;
@@ -672,6 +673,19 @@
         font-weight: bold;
         margin: 0;
         padding: 10px;
+    }
+
+    .container-lineup-text-add{
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 70%;
+        height: 20%;
+        text-align: center;
+        font-weight: bold;
+        padding: 10px 0 0 0;
+        margin: 0;
     }
 
     .lineup-text{
@@ -705,6 +719,7 @@
         position: relative;
         gap: 10px;
         overflow: scroll;
+        z-index: 1000;
     }
 
     .modal-lineup-content h3{
@@ -722,10 +737,15 @@
         justify-content: center;
         align-items: center;
         text-align: center;
+
+        position:sticky;
+        top: 0;
+        z-index: 10;
+
         width: 100%;
         height: auto;
         padding: 20px;
-        background-color: #759770;
+        background: linear-gradient(to bottom, #759770 80%, #0e1116 99.5%);
     }
 
     .modal-lineup-title{
@@ -755,7 +775,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 60%;
+        height: 100%;
         width: 100%;
         font-size: 20px;
         color:rgb(209, 183, 183);
@@ -797,6 +817,46 @@
         font-weight: 400;
         padding: 0px 10px 0px 10px;
         gap: 10px;
+    }
+
+    .container-lineup-add{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        width: min-content;
+        height: min-content;
+
+        background-color: #7d96b3;
+
+        margin: 6px 0 0 0;
+        border-radius: 50%;
+    }
+
+    .container-lineup-add:hover{
+        cursor: pointer;
+        background-color: #abbbce;
+        border-radius: 50%;
+    }
+
+    .button-add-lineup{
+        background-color: transparent;
+        outline: none;
+        box-shadow: none;
+
+        height: 100%;
+        width: 100%;
+
+        color: black;
+        border: none;
+        border-radius: 5px;
+
+        cursor: pointer;
+
+        transition: all 0.9s linear;
+
+        font-size: 12px;
     }
 
     .container-form-field{
@@ -865,9 +925,10 @@
         color: black;
         gap: 10px;
         padding: 0px 10px 0px 10px;
+        cursor:default;
     }
 
-    .input-new-lineup-example span{
+    .input-new-lineup-example div{
         display: inline-flex;
         flex-direction: column;
         text-align: center;
@@ -879,6 +940,7 @@
         font-size: 20px;
         color:#001442;
         background-color:rgb(172, 172, 172);
+        
     }
 
     .container-save-lineup{

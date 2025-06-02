@@ -28,6 +28,7 @@
           
         <!-- Botones de resultados -->
         <div class="container-results-all">
+            
             <!-- Texto Resultado -->
             <div class="container-results-text">
                 <span class="material-symbols-outlined">info</span>

@@ -10,7 +10,7 @@
 
     <!-- Iconos -->
     <!-- <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=" rel="stylesheet" /> -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_drop_down,arrow_drop_up,group,handshake,info,stat_minus_2,touch_app,trophy" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_drop_down,arrow_drop_up,edit,group,handshake,info,search,stat_minus_2,touch_app,trophy" />
     
     <!-- Fuente -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

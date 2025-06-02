@@ -6,13 +6,17 @@ $lineup = new LineupForm();
 
 //Traer la alineación de un equipo
 if(isset($_GET["lineup_text"])){
-    $data_forms = $lineup->get_lineup($_GET["lineup_text"]);
-    echo $data_forms;
+     $data_forms = $lineup->get_lineup($_GET["lineup_text"]);
+    echo $data_forms; 
     exit;
 }
-else{
-    echo json_encode(["error" => "No se ha enviado el texto del alineacion"]);
-} 
+
+//Adquirir la alineación de un equipo
+if(isset($_GET["lineup_formation"])){
+  $data_form_lineup = $lineup->get_lineup_formation($_GET["lineup_formation"]);
+  echo $data_form_lineup;
+  exit;
+}
 
 //Guardar la alinación de un equipo
 if(isset($_GET["lineup_form"])){
@@ -21,8 +25,4 @@ if(isset($_GET["lineup_form"])){
     echo json_encode(["success" => "Alineación guardada correctamente"]);
     }
 }
-else {
-    echo json_encode(["error" => "No se ha enviado el texto del alineacion"]);
-} 
-
 ?>

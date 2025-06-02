@@ -17,7 +17,7 @@ class SoccerFieldDb extends HTMLElement {
             --player-shadow: #0008;
 
             width: 100%;
-            height: 200px;
+            height: 220px;
             display: flex;
             justify-content: center;  
         }
@@ -160,7 +160,7 @@ class SoccerFieldDb extends HTMLElement {
             display: inline-block;
             width: 100%;
             height: 100%;
-            padding-bottom: 2px;
+            padding-bottom: 3px;
             background-color: transparent;
             justify-content: center;
             align-items: center;

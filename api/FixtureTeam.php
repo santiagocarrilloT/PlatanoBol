@@ -21,7 +21,7 @@ class FixtureTeam{
     }
 
     static function data_fixture_curl(string $API_FOOTBALL_URL, string $API_KEY, string $API_HOST): array {
-        $curl = curl_init();
+        /* $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => $API_FOOTBALL_URL,
             CURLOPT_RETURNTRANSFER => true,
@@ -58,14 +58,14 @@ class FixtureTeam{
                 date("H:i:s", strtotime($info["fixture"]["date"])),
                 $info["league"]["logo"],
             );
-        }
+        } */
 
-        /* $fixture_team = [
+        $fixture_team = [
             new self(
-                "1127",
+                1127,
                 "Deportivo Cali",
                 "https://media.api-sports.io/football/teams/1127.png",
-                "1128",
+                1128,
                 "Independiente Medellín",
                 "https://media.api-sports.io/football/teams/1128.png",
                 2,
@@ -78,10 +78,10 @@ class FixtureTeam{
                 "https://media.api-sports.io/football/leagues/239.png"
             ), 
             new self(
-                "1127",
+                1127,
                 "Deportivo Cali",
                 "https://media.api-sports.io/football/teams/1127.png",
-                "1129",
+                1129,
                 "Envigado",
                 "https://media.api-sports.io/football/teams/1129.png",
                 1,
@@ -94,10 +94,10 @@ class FixtureTeam{
                 "https://media.api-sports.io/football/leagues/239.png"
             ),
             new self(
-                "1127",
+                1127,
                 "Deportivo Cali",
                 "https://media.api-sports.io/football/teams/1127.png",
-                "1130",
+                1130,
                 "Huila",
                 "https://media.api-sports.io/football/teams/1130.png",
                 3,
@@ -110,10 +110,10 @@ class FixtureTeam{
                 "https://media.api-sports.io/football/leagues/239.png"
             ),
             new self(
-                "1127",
+                1127,
                 "Deportivo Cali",
                 "https://media.api-sports.io/football/teams/1127.png",
-                "1131",
+                1131,
                 "Bucaramanga",
                 "https://media.api-sports.io/football/teams/1131.png",
                 0,
@@ -125,7 +125,7 @@ class FixtureTeam{
                 date("H:i:s", strtotime("2023-10-22 18:00:00")),
                 "https://media.api-sports.io/football/leagues/239.png"
             )
-        ]; */
+        ];
         return $fixture_team;
     }
 

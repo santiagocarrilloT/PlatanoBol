@@ -10,7 +10,7 @@
 
     require_once "./api/FixtureTeam.php";
 
-    if (isset($_GET["code"])){
+    /* if (isset($_GET["code"])){
         setcookie("team_info", json_encode($_GET["code"]), time() + (86400 * 30), "/"); // 86400 = 1 day
         setcookie("team_name", urlencode($_GET["name"]), time() + (86400 * 30), "/"); // 86400 = 1 day
         exit;
@@ -46,9 +46,9 @@
             }
     } catch (Exception $e) {
         echo "Error: " . $e->getMessage();
-    }
+    } */
 
-    /* $API_FIXTURE_URL = get_API_FIXTURE_URL($TEAM_CODE, 2023);
+    $API_FIXTURE_URL = get_API_FIXTURE_URL($TEAM_CODE, 2023);
     $fixture_team = FixtureTeam::data_fixture_curl($API_FIXTURE_URL, $API_KEY, $API_HOST);
     $data_fixture = [];
     foreach ($fixture_team as $data){
@@ -258,7 +258,7 @@
             ]
         ],
     ];
-    $data_forms = explode(" ", $data_team["form"]); */
+    $data_forms = explode(" ", $data_team["form"]);
     
 ?>
 
