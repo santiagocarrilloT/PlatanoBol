@@ -10,7 +10,7 @@
 
     require_once "./api/FixtureTeam.php";
 
-    /* if (isset($_GET["code"])){
+    /*  if (isset($_GET["code"])){
         setcookie("team_info", json_encode($_GET["code"]), time() + (86400 * 30), "/"); // 86400 = 1 day
         setcookie("team_name", urlencode($_GET["name"]), time() + (86400 * 30), "/"); // 86400 = 1 day
         exit;

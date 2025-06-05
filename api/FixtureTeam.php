@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 class FixtureTeam{
-    
+    /* Agregar número del partido */
     function __construct(public int $id_local_team, public string $local_team, public string $local_team_logo, public int $id_visitor_team ,public string $visitor_team, public string $visitor_team_logo, public int $result_local, public int $result_visitor, public string $stadium, public string $competition, public string $city, public string $date, public string $time, public string $league_logo)
     {
         $this->id_local_team = $id_local_team;

@@ -11,8 +11,24 @@ $open_data = false;
             <div class="container-nav-header">
                 <nav class="nav-header">
                     <ul>
-                        <a href="templates/fixture-components/fixture.php">Partidos</a>
-                        <a href="/templates/map-components/map.php">Mapa</a>
+                        <a href="#" class="disabled">
+                            <div class="container-header-icon">
+                                <span class="material-symbols-outlined">analytics</span>
+                                Club
+                            </div>
+                        </a>
+                        <a href="templates/fixture-components/fixture.php">
+                            <div class="container-header-icon">
+                                <span class="material-symbols-outlined">family_history</span>
+                                Juegos
+                            </div>
+                        </a>
+                        <a href="/templates/map-components/map.php">
+                            <div class="container-header-icon">
+                                <span class="material-symbols-outlined">location_on</span>
+                                Mapa
+                            </div>
+                        </a>
                     </ul>
                 </nav>
             </div>
