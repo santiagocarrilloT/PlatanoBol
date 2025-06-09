@@ -7,12 +7,13 @@ openModal.addEventListener("click", function () {
   modal.style.display = "flex";
 });
 
-closeModal.addEventListener("click", function () {
-  modal.style.display = "none";
+closeModal.addEventListener("click", function (e) {
+  if (e.target === closeModal) modal.style.display = "none";
 });
 
 /* Resetear campos en el modal */
 function resetLineup() {
+  modal.style.display = "none";
   // Resetear los inputs
   for (let i = 1; i <= 5; i++) {
     const input = document.getElementById("input" + i);

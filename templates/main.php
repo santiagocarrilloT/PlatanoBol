@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 $open_data = false;
+
 ?>
 <body>
     <header class="header">
@@ -17,7 +18,7 @@ $open_data = false;
                                 Club
                             </div>
                         </a>
-                        <a href="templates/fixture-components/fixture.php">
+                        <a href="templates/fixture-components/fixture.php" onclick='sendFixtureInformation(<?php echo json_encode($data_fixture); ?>)'>
                             <div class="container-header-icon">
                                 <span class="material-symbols-outlined">family_history</span>
                                 Juegos

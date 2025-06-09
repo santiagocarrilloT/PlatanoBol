@@ -10,3 +10,22 @@ document.addEventListener("click", function (event) {
     resultsSearch.style.display = "block";
   }
 });
+
+/*function sendFixtureInformation(fixtureData) {
+  localStorage.setItem("fixture", JSON.stringify(fixtureData));
+  window.location.href = "templates/fixture-components/fixture.php";
+
+ const fixture = { fixture: fixtureData };
+  $.ajax({
+    type: "GET",
+    url: "templates/fixture-components/fixture.php",
+    data: fixture,
+    success: function (response) {
+      
+      //window.open("templates/fixture-components/fixture.php");
+    },
+    error: function (error) {
+      console.error("Error sending fixture information:", error);
+    },
+  }); 
+}*/

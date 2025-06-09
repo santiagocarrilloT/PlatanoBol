@@ -14,9 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   for (let ind = 0; ind < arrayLineup.length; ind++) {
     get_lineup(arrayLineup[ind].trim(), ind);
-    console.log("Obteniendo alineación:", arrayLineup[ind].trim());
   }
-  //verifyInputValue();
+  verifyInputValue();
   save_lineup();
 });
 
@@ -108,7 +107,7 @@ function selectInputKey() {
   });
 }
 
-/*function verifyInputValue() {
+function verifyInputValue() {
   const input1 = document.getElementById("input1");
   const input2 = document.getElementById("input2");
   input2.disabled = true;
@@ -191,7 +190,7 @@ function selectInputKey() {
       countTotal.style.backgroundColor = "#ffbbbb";
     }
   });
-}*/
+}
 
 function save_lineup() {
   const saveButton = document.getElementById("buttonSaveLineup");
@@ -205,6 +204,7 @@ function save_lineup() {
         lineup_form: formacionText,
         lineup_component: alineacion.outerHTML,
       };
+      /*  */
       $.ajax({
         type: "GET",
         url: "/controller/lineup.php",
@@ -213,12 +213,23 @@ function save_lineup() {
           if (data.trim() === "" || data === "[]") {
             return `<div class="team-result"><span>No se encontraron resultados</span></div>`;
           }
+
+          Swal.fire({
+            icon: "success",
+            title: "Guardado con Éxito",
+            text: "Alineación guardada correctamente!",
+          });
         },
         error: function (xhr, status, error) {
           console.log("Error al guardar la alineación:", error);
         },
       });
     } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Verifica la formación!",
+      });
       console.log(
         "La alineación no es válida. Asegúrate de que la suma de los jugadores sea 10."
       );

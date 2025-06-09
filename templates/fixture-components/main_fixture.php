@@ -41,12 +41,15 @@ $filtro = "";
                     <span class="material-symbols-outlined">tune</span>
                     Filtros:
                 </div>
-    
-                <select class="select-filter" name="filter_fixture" id="filter_fixture">
-                    <option value="all" <?php if($filtro == 'all') echo 'selected'; ?>>Todos los partidos</option>
-                    <option value="local" <?php if($filtro == 'local') echo 'selected'; ?>>Partidos como local</option>
-                    <option value="visitor" <?php if($filtro == 'visitor') echo 'selected'; ?>>Partidos como visitante</option>
-                </select>
+
+                <form method="post" action="">
+                    <select class="select-filter" name="filter_fixture" id="filter_fixture">
+                        <option type="submit" value="all">Todos los partidos</option>
+                        <option type="submit" value="local">Partidos como local</option>
+                        <option type="submit" value="visitor">Partidos como visitante</option>
+                    </select>
+                </form>
+                
             </div>
 
             <!-- Componentes Fixtures -->

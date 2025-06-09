@@ -223,7 +223,7 @@ function render_fields ($lineups){
                             <span>4-3-2-1</span>
                         </div>
                         <div class="game-text">
-                            <span>Jugados:</span>
+                            <span>Partidos Jugados:</span>
                             <span>' . $formation["played"] .'</span>
                         </div>
                     </div>
@@ -257,10 +257,10 @@ function render_fields ($lineups){
                 }
                 $formationHTML = '
                 <div class="container-lineup-form">
-                    <div class="container-lineup-text-add">
+                    <div class="container-lineup-text">
                         <div class="lineup-text">
                             <span>Alineación:</span>
-                            <span>' . $formation["formation"] . '</span>
+                            <span>' . $formation["formation"] .'</span>
                         </div>
                         <div class="game-text">
                             <span>Partidos Jugados:</span>
@@ -290,7 +290,7 @@ function render_fields ($lineups){
         <h3>Alineaciones Utilizadas</h3>
         <button id="openModalBtn" class="new-lineup">+</button>
         <div id="modalNewLineup" class="div-new-lineup">
-            <div class="modal-lineup">
+            <div id="closeModalBtn" class="modal-lineup">
                 <div class="modal-lineup-content">
                     
                     <!-- Header -->
@@ -301,7 +301,7 @@ function render_fields ($lineups){
                         </div>
                         <!-- Título -->
                         <div class="modal-lineup-title">
-                            <h3>Nueva Alineación</h3>
+                            <h3>Modificar Alineación</h3>
                         </div>
                     </div>
                     
@@ -350,8 +350,12 @@ function render_fields ($lineups){
                         </div>
 
                         <!-- Botón Guardado -->
-                        <div class="container-save-lineup">
-                            <button id="buttonSaveLineup" class="button-save">Guardar Alineación</button>
+                        <div  id="buttonSaveLineup" class="container-save-lineup">
+                            <div class="container-form-lineup-text">
+                                <span class="material-symbols-outlined">save</span>
+                                <button class="button-save">Guardar Alineación</button>
+                            </div>
+                            
                         </div>
                         
                     </div>
@@ -362,11 +366,13 @@ function render_fields ($lineups){
     </div>
     
     <!-- Alineaciones Creadas -->
-    <?php
-        global $lineup_db;
-        render_fields($lineups); 
-        $lineup_db = implode(",", $lineup_db);
-        print_r("<div id='lineupArrayID' style='display: none;'> ". htmlspecialchars($lineup_db) ." </div>");
-    ?>
+    <div class="container-lineup-created">
+        <?php
+            global $lineup_db;
+            render_fields($lineups); 
+            $lineup_db = implode(",", $lineup_db);
+            print_r("<div id='lineupArrayID' style='display: none;'> ". htmlspecialchars($lineup_db) ." </div>");
+        ?>
+    </div>
     <script src="../../templates/left-components/movement_player.js"></script>
 </div>

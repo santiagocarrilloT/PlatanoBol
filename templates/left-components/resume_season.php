@@ -36,7 +36,7 @@
             </div>
 
             <!-- Cargar Resultados -->
-             <div class="container-results-all-items" onclick="window.location.href='/templates/fixture-components/fixture.php';">
+             <div class="container-results-all-items" onclick="window.location.href='/templates/fixture-components/fixture.php'">
                 <?php
                     $count = 0;
                     foreach ($data_fixture as $fixture) {
@@ -60,7 +60,7 @@
                                         <span >".($count+1)."</span>
                                         <div class='results-item-degrade tooltip-container'>
                                             <span class='material-symbols-outlined'>handshake</span>
-                                            <abbr class='results-item-info tooltip-text'>
+                                            <abbr class='tooltip-text'>
                                                 <span>" . $fixture["local_team"]. "</span>
                                                 <span>VS</span>
                                                 <span>" . $fixture["visitor_team"]. "</span>

@@ -6,13 +6,18 @@ require_once "../../functions.php";
 
 $API_FIXTURE_URL = get_API_FIXTURE_URL($TEAM_CODE, 2023);
 
+
 try {
+    /* if(isset($_POST['fixture'])){
+        $fixture_team = json_decode($_POST['fixture'], true);
+        $data_fixture = [];
+        print_r("ds");
+        foreach ($fixture_team as $data){
+            $data_fixture[] = $data;
+        }
+    } */
 
-    if(isset($_GET['fixture_team'])){
-        echo $_GET['fixture_team'];
-    }
-
-    else if(isset($_COOKIE["team_info"])){
+    if(isset($_COOKIE["team_info"])){
         $TEAM_CODE = json_decode($_COOKIE["team_info"], true);
         $API_FIXTURE_URL = get_API_FIXTURE_URL($TEAM_CODE, 2023);
         //Búsqueda de equipos

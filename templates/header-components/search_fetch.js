@@ -134,5 +134,3 @@ function searchTeam(teamCode, teamName) {
     });
   }
 }
-
-//Función para buscar equipos por fixture

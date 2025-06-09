@@ -420,13 +420,16 @@
         gap: 13px;
         padding: 20px;
 
-        border-radius: 16px;
+        background-image: linear-gradient(to bottom, #9CC2C4 3.5%, rgba(155, 155, 155, 0.12) 9.5%);
+
+        border-radius: 0 0 16px 16px;
         cursor: pointer;
     }
 
     .container-results-all-items:hover{
-         background:
-         radial-gradient(circle at 50% 50%, hsla(0, 0.00%, 72.50%, 0.24) 0%, hsla(0, 0.00%, 60.80%, 0.12) 100%);
+        background:
+        linear-gradient(to bottom, #9CC2C4 4.5%, rgba(155, 155, 155, 0.12) 10.5%),
+        radial-gradient(circle at 50% 50%, hsla(0, 0.00%, 72.50%, 0.11) 0%, hsla(0, 0.00%, 60.80%, 0.12) 100%);
     }
 
     .container-resume-items-win,
@@ -479,9 +482,12 @@
 
     .tooltip-container {
         display: inline-block;
+        position: relative;
     }
 
     .tooltip-text {
+        display: none;
+
         width:85px;
         background-color:rgb(180, 180, 180);
         color: #fff;
@@ -490,24 +496,25 @@
 
         border-radius: 6px;
         padding: 5px;
+
         position: absolute;
         top: 100%; /* Posiciona el tooltip bajo del elemento */
         left: 50%;
         transform: translateX(-50%);
+
         opacity: 0;
         transition: opacity 0.3s;
         z-index: 1000;
 
-        display: inline-flex;
         flex-direction: column;
         gap: 5px;
     }
 
     .tooltip-container:hover .tooltip-text {
+        display: inline-flex;
         visibility: visible;
         opacity: 1;
     }
-
 
     .results-item-win,
     .results-item-degrade,
@@ -626,15 +633,14 @@
         display: flex;
         flex-direction: column;
         background-color: rgba(0, 0, 0, 0.75);
-        justify-content: center;
+        justify-content: top;
         align-items: center;
         margin: 0 auto;
         gap: 20px;
         padding: 30px;
         border-radius: 16px;
         width: 100%;
-        height: 100%;
-        
+        height: min-content;    
     }
 
     .container-new-lineup{
@@ -670,13 +676,14 @@
         width: 100%;
         height: fit-content;
 
-        margin: 0 auto;
+        margin: 0;
         text-align: left;
         gap: 10px;
-        padding-bottom: 20px;
+        padding: 15px 0px 15px 0px;
         border-radius: 16px;
         justify-content: space-between;
-        background-color:rgba(155, 155, 155, 0.57);
+        background-color:rgba(53, 67, 87, 0.6);
+        border: 1px solid #abbbce;
     }
 
     .container-lineup-text{
@@ -684,29 +691,47 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+
         width: 70%;
-        height: 20%;
+        height: min-content;
+
         text-align: center;
         font-weight: bold;
         margin: 0;
         padding: 10px;
+
+        background-color: #abbbce;
+        border-radius: 16px;
+
+        border: 1px solid rgb(0, 0, 0);
+        color: #000000;
     }
 
-    .container-lineup-text-add{
-        display: inline-flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 70%;
-        height: 20%;
-        text-align: center;
-        font-weight: bold;
-        padding: 10px 0 0 0;
-        margin: 0;
+    .container-lineup-text:hover{
+        cursor: default;
+        background-color: #9cc2c4;
+        border-radius: 16px;
+        transform: scale(1.05);
+        transition: all 0.3s ease;
     }
 
     .lineup-text{
         display: inline-block;
+    }
+
+    .container-lineup-created{
+        display: flex;
+        flex-direction: column;
+
+        gap: 15px;
+        width: 90%;
+        height: 400px;
+        
+        padding: 0;
+        margin: 0;
+        border-radius: 16px;
+
+        overflow-y: scroll;
     }
 
     /* Modal de nueva alineación */
@@ -722,7 +747,7 @@
         right: 0;
         bottom: 0;
         background-color:rgba(0, 0, 0, 0.64);
-        z-index: 1000;
+        z-index: 200;
         padding-top: 20px;
         padding-bottom: 20px;
     }
@@ -735,7 +760,7 @@
         max-width: 500px;
         position: relative;
         gap: 10px;
-        overflow: scroll;
+        overflow-y: scroll;
         z-index: 1000;
     }
 
@@ -746,7 +771,7 @@
         text-align: center;
         margin: 5px;
         padding: 0;
-        color: black;
+        color: #ABBBCE;
     }
 
     .modal-lineup-header{
@@ -762,7 +787,7 @@
         width: 100%;
         height: auto;
         padding: 20px;
-        background: linear-gradient(to bottom, #759770 80%, #0e1116 99.5%);
+        background: linear-gradient(to bottom, #3c4e68 90%, transparent 98.9%);
     }
 
     .modal-lineup-title{
@@ -777,13 +802,16 @@
         justify-content: right;
         top: 2px;
         right: 10px;
+
         width: auto;
         height: auto;
         position: absolute;
-        background-color: white;
+        background-color: #ABBBCE;
+
         padding: 0px 10px 0px 10px;
         margin: 5px;
         border-radius: 50%;
+
         cursor: pointer;
         transition: all .3s ease;
     }
@@ -795,7 +823,7 @@
         height: 100%;
         width: 100%;
         font-size: 20px;
-        color:rgb(209, 183, 183);
+        color: #354357;
         font-weight: 700;
         padding: 0;
         margin: 0;
@@ -964,30 +992,51 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
         background-color: #ABBBCE;
+
         width: 100%;
-        padding: 10px;
+        height: 8%;
+        /* padding: 10px; */
         margin: 0;
         margin-bottom: 10px;
         gap: 10px;
         border-radius: 16px;
+
+        color: #001442;
+        border: 2px solid #000000;
+    }
+
+    .container-save-lineup:hover{
+        cursor: pointer;
+        background-color: #9cc2c4;
+        border-radius: 16px;
+        transform: scale(1.02);
+        transition: all 1s ease;
     }
 
     .button-save{
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 71%;
+
+        width: 100%;
+        height: 100%;
+        padding: 0;
+
         background-color: transparent;
         border-color: transparent;
-        height: 10px;
-        padding: 15px;
-        font-size: 15px;
-        color: #001442;
-        font-weight: 400;
+        color: #000000;
+
+        font-weight:bold;
     }
     .button-save:hover{
         cursor: pointer;
         background-color: transparent;
+    }
+
+    .button-save:focus{
+        outline: none;
+        box-shadow: none;
     }
 </style>
