@@ -15,4 +15,16 @@
         extract($data);
         require "templates/$folder/$template.php";
     }
+
+    /* function get_data_fixuture(string $TEAM_CODE, int $season) {
+        $API_FIXTURE_URL = get_API_FIXTURE_URL($TEAM_CODE, 2023);
+            $fixture_team = FixtureTeam::data_fixture_curl($API_FIXTURE_URL, $API_KEY, $API_HOST);
+
+            //Arreglo de datos del Fixture
+            $data_fixture = [];
+            foreach ($fixture_team as $data){
+                $data_fixture[] = $data->get_data();
+            }
+            $_SESSION['fixture'] = json_encode($data_fixture);
+    } */
 ?>

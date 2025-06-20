@@ -420,7 +420,7 @@
         gap: 13px;
         padding: 20px;
 
-        background-image: linear-gradient(to bottom, #9CC2C4 3.5%, rgba(155, 155, 155, 0.12) 9.5%);
+        background-image: linear-gradient(to bottom, #9CC2C4 1.5%, transparent 3.5%);
 
         border-radius: 0 0 16px 16px;
         cursor: pointer;
@@ -428,7 +428,7 @@
 
     .container-results-all-items:hover{
         background:
-        linear-gradient(to bottom, #9CC2C4 4.5%, rgba(155, 155, 155, 0.12) 10.5%),
+        linear-gradient(to bottom, #9CC2C4 1.5%, transparent 3.5%),
         radial-gradient(circle at 50% 50%, hsla(0, 0.00%, 72.50%, 0.11) 0%, hsla(0, 0.00%, 60.80%, 0.12) 100%);
     }
 
@@ -504,7 +504,7 @@
 
         opacity: 0;
         transition: opacity 0.3s;
-        z-index: 1000;
+        z-index: 99;
 
         flex-direction: column;
         gap: 5px;
@@ -553,6 +553,7 @@
         transform: scale(1.2);
         transition: all 0.3s ease;
         cursor: pointer;
+        z-index: 1;
     }
 
     

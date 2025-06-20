@@ -1,16 +1,15 @@
 <?php
 
-    //Se iniciar una sesión para almacenar los datos de la API
+    //Se iniciar una sesión para almacenar datos
     session_start();
 
-    require_once "functions.php";
-
     require_once "./api/const.php";
+    require_once "functions.php";
     require_once "./api/Staticts.php";
 
     require_once "./api/FixtureTeam.php";
 
-    /*  if (isset($_GET["code"])){
+    if (isset($_GET["code"])){
         setcookie("team_info", json_encode($_GET["code"]), time() + (86400 * 30), "/"); // 86400 = 1 day
         setcookie("team_name", urlencode($_GET["name"]), time() + (86400 * 30), "/"); // 86400 = 1 day
         exit;
@@ -35,20 +34,31 @@
             $data_forms = str_split($data_team["form"]);
 
             //Datos del Fixture
-            $API_FIXTURE_URL = get_API_FIXTURE_URL($TEAM_CODE, 2023);
-            $fixture_team = FixtureTeam::data_fixture_curl($API_FIXTURE_URL, $API_KEY, $API_HOST);
-
-            //Arreglo de datos del Fixture
-            $data_fixture = [];
-            foreach ($fixture_team as $data){
-                $data_fixture[] = $data->get_data();
-                }
+            if(isset($_SESSION['fixture']) && $_COOKIE["team_info"] == $_COOKIE['team_id_fixture']){
+                $data_fixture = json_decode($_SESSION['fixture'], true);
+                echo "Datos fixture de la sesión.";
             }
+            else{
+                $API_FIXTURE_URL = get_API_FIXTURE_URL($TEAM_CODE, 2023);
+                $fixture_team = FixtureTeam::data_fixture_curl($API_FIXTURE_URL, $API_KEY, $API_HOST);
+
+                //Arreglo de datos del Fixture
+                $data_fixture = [];
+                foreach ($fixture_team as $data){
+                    $data_fixture[] = $data->get_data();
+                }
+                $_SESSION['fixture'] = json_encode($data_fixture);
+                setcookie("team_id_fixture", json_encode($TEAM_CODE), time() + (86400 * 30), "/"); // 86400 = 1 day
+            }
+            
+        }
+
+            
     } catch (Exception $e) {
         echo "Error: " . $e->getMessage();
-    } */
+    }
 
-    $API_FIXTURE_URL = get_API_FIXTURE_URL($TEAM_CODE, 2023);
+    /*$API_FIXTURE_URL = get_API_FIXTURE_URL($TEAM_CODE, 2023);
     $fixture_team = FixtureTeam::data_fixture_curl($API_FIXTURE_URL, $API_KEY, $API_HOST);
     $data_fixture = [];
     foreach ($fixture_team as $data){
@@ -258,7 +268,7 @@
             ]
         ],
     ];
-    $data_forms = explode(" ", $data_team["form"]);
+    $data_forms = explode(" ", $data_team["form"]);*/
     
 ?>
 

@@ -18,7 +18,7 @@ $open_data = false;
                                 Club
                             </div>
                         </a>
-                        <a href="templates/fixture-components/fixture.php" onclick='sendFixtureInformation(<?php echo json_encode($data_fixture); ?>)'>
+                        <a href="templates/fixture-components/fixture.php">
                             <div class="container-header-icon">
                                 <span class="material-symbols-outlined">family_history</span>
                                 Juegos

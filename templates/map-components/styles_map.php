@@ -237,6 +237,7 @@
     text-align: center;
     width: 100%;
     height: 100%;
+    border-radius: 16px;
   }
 
   .container-map a span{

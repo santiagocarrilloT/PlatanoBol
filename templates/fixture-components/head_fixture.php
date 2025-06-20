@@ -9,7 +9,7 @@
     >
 
     <!-- Íconos -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=analytics,family_history,location_on,search,stadium,trophy,tune" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=analytics,family_history,keyboard_arrow_left,keyboard_arrow_right,location_on,search,stadium,trophy,tune" />
 
     <!-- Fuente -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

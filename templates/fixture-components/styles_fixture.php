@@ -241,6 +241,11 @@
     margin-bottom: 30px;
   }
 
+.container-filters{
+  display: inline-flex;
+  justify-content: space-between;
+}
+
   .container-fixture{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -261,13 +266,22 @@
     margin-bottom: 15px;
   }
 
+  .fixture-components-search{
+    display: inline-flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 30%;
+  }
+
   .container-fixture-filter-title{
     display: inline-flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     gap: 5px;
     color: white;
     font-weight: 400;
+
+    
   }
 
   .select-filter{
@@ -275,7 +289,7 @@
     justify-content: center;
     align-items: center;
 
-    width: 25%;
+    width: 100%;
     height: 40px;
     padding: 0 10px;
     margin: 0;
@@ -301,6 +315,69 @@
     font-weight: 500;
   }
 
+  .container-nofound-filter{
+    display: flex;
+    grid-column: 1 / -1;
+    width: 100%;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .form-filter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0;
+    padding: 0;
+
+    width: fit-content;
+    height: fit-content;
+  }
+
+  .form-filter form{
+    margin: 0;
+    padding: 0;
+  }
+
+  .container-section-fixture{
+    display: inline-flex;
+    flex-direction: row;
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .button-next-fixture, 
+  .button-number-fixture{
+    background: transparent;
+    border-radius: 50%;
+
+    width: fit-content;
+    height: fit-content;
+
+    padding: 3px;
+    margin: 0;
+
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+
+  .button-next-fixture:hover,
+  .button-number-fixture:hover{
+    background-color:rgb(65, 65, 65);  
+  }
+
+  .button-number-fixture{
+    width: 8%;
+    height: fit-content;
+    text-align: center;
+  }
+
   .container-fixture-match{
     display: flex;
     justify-content: top;
@@ -322,7 +399,7 @@
     background: radial-gradient(circle,rgba(60, 78, 104, 0.40) 0%,rgba(47, 59, 75, 0.18) 100%);
     transform: scale(1.02);
     transition: transform 0.2s ease-in-out;
-    cursor: pointer;
+    cursor:default;
   }
 
 

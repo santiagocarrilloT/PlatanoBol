@@ -1,23 +1,33 @@
 <?php
 
+session_start();
+
 require_once "../../api/const.php";
 require_once "../../api/FixtureTeam.php";
 require_once "../../functions.php";
 
-$API_FIXTURE_URL = get_API_FIXTURE_URL($TEAM_CODE, 2023);
 
+if (isset($_GET["code"])){
+    setcookie("team_info", json_encode($_GET["code"]), time() + (86400 * 30), "/"); // 86400 = 1 day
+    setcookie("team_name", urlencode($_GET["name"]), time() + (86400 * 30), "/"); // 86400 = 1 day
+    exit;
+    //$code = $_GET["code"];
+    //$TEAM_CODE = $code;
+    //$API_FOOTBALL_URL = get_API_FOOTBALL_URL($TEAM_CODE, 2023);
+    }
 
 try {
-    /* if(isset($_POST['fixture'])){
-        $fixture_team = json_decode($_POST['fixture'], true);
-        $data_fixture = [];
+    if(isset($_SESSION['fixture']) && $_COOKIE["team_info"] == $_COOKIE['team_id_fixture']) {
+        $data_fixture = json_decode($_SESSION['fixture'], true);
+        print_r('Datos fixture sesión');
+        /* $data_fixture = [];
         print_r("ds");
         foreach ($fixture_team as $data){
             $data_fixture[] = $data;
-        }
-    } */
+        } */
+    } 
 
-    if(isset($_COOKIE["team_info"])){
+    else if(isset($_COOKIE["team_info"])){
         $TEAM_CODE = json_decode($_COOKIE["team_info"], true);
         $API_FIXTURE_URL = get_API_FIXTURE_URL($TEAM_CODE, 2023);
         //Búsqueda de equipos
@@ -26,6 +36,9 @@ try {
         foreach ($fixture_team as $data){
             $data_fixture[] = $data->get_data();
         }
+
+        $_SESSION['fixture'] = json_encode($data_fixture);
+        setcookie("team_id_fixture", json_encode($TEAM_CODE), time() + (86400 * 30), "/");
     }
 } catch (Exception $e) {
     echo "Error: " . $e->getMessage();
