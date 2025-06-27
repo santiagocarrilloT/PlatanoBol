@@ -346,7 +346,7 @@
     display: inline-flex;
     flex-direction: row;
     width: 30%;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
     gap: 3px;
   }
@@ -359,12 +359,27 @@
     width: fit-content;
     height: fit-content;
 
-    padding: 3px;
+    padding: 0 6px 0 6px;
     margin: 0;
 
     border: none;
     outline: none;
     box-shadow: none;
+  }
+  .container-number-fixture{
+    display: flex;
+    align-items: right;
+
+    gap: 2px;
+
+    height: min-content;
+    width:auto;
+  }
+
+  .active {
+    background-color: rgb(65, 65, 65);
+    color: white;
+    font-weight: 600;
   }
 
   .button-next-fixture:hover,
@@ -373,8 +388,8 @@
   }
 
   .button-number-fixture{
-    width: 8%;
-    height: fit-content;
+    width: 100%;
+    height: 100%;
     text-align: center;
   }
 

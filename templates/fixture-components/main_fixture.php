@@ -74,218 +74,102 @@ $filtro = "";
                 </div>
 
                 <!-- Contenedor de secciones -->
-                <div class="container-section-fixture">
-                    <button class="button-next-fixture material-symbols-outlined">keyboard_arrow_left</button>
-                    <?php
-                    $size_data = sizeof($data);
-                    $total_pages = ceil($size_data / 10);
-                    
-
-                    if( $total_pages < 4) {
-                        for ($i = 1; $i <= $total_pages; $i+=1) {
-                            echo '<button class="button-number-fixture">' . $i . '</button>';
-                        }
-                        
-                    }
-                    else {
-                        $htmlComponent = '';
-                        for ($i = 1; $i <= 3; $i+=1) {
-                            $htmlComponent .= '<button class="button-number-fixture">' . $i . '</button>';
-                        } 
-                        $htmlComponent .= '<span class="button-number-fixture">...</span>';
-                       
-                        echo $htmlComponent; 
-                    }
-                    ?>                   
-                    <button class="button-next-fixture material-symbols-outlined">keyboard_arrow_right</button>
+                <div id="containerSectionFixture" class="container-section-fixture">
+                    <button id="arrowLeft" class="button-next-fixture material-symbols-outlined">keyboard_arrow_left</button>
+                    <div id="sectionFixture" class="container-number-fixture">
+                        <!-- Aquí se agregan las secciones -->
+                    </div>
+                                      
+                    <button id="arrowRight" class="button-next-fixture material-symbols-outlined">keyboard_arrow_right</button>
                 </div>
             </div>
 
 
             <!-- Componentes Fixtures -->
-            <div class="container-fixture">
+            <div id="fixtureContainer" class="container-fixture" >
                 <?php
-                $filtro = isset($_GET['filter_fixture']) ? $_GET['filter_fixture'] : 'all';
+                    $filtro = isset($_GET['filter_fixture']) ? $_GET['filter_fixture'] : 'all';
 
-                function load_fixture_data($data = [], $filtro = 'all'){
-                    $codigo_equipo = isset($_COOKIE["team_info"]) ? json_decode($_COOKIE["team_info"], true) : null;
-                    //$codigo_equipo = 1127; // Deportivo Cali
-                    $count = 1;
-                    foreach ($data as $team) {
-                        if($team['id_local_team'] == $codigo_equipo && $filtro == 'local'){
-                            echo '
-                            <!-- Información del Juego -->
-                            <div class="container-fixture-match">
+                    function load_fixture_data($data = [], $filtro = 'all'){
+                        $fixture_filter = [];
+                        $codigo_equipo = isset($_COOKIE["team_info"]) ? json_decode($_COOKIE["team_info"], true) : null;
+                        //$codigo_equipo = 1127; // Deportivo Cali
+                        $count = 1;
+                        foreach ($data as $team) {
+                            if($team['id_local_team'] == $codigo_equipo && $filtro == 'local'){
+                                array_push($fixture_filter, $team);
+                            }
 
-                                <!-- Número de partido -->
-                                <div class="container-fixture-match-number">
-                                    <span>' . $count . '</span>
-                                </div>
+                            else if($team['id_visitor_team'] == $codigo_equipo && $filtro == 'visitor'){
+                                array_push($fixture_filter, $team);
+                                /* echo '
+                                <!-- Información del Juego -->
+                                <div class="container-fixture-match">
 
-                                <!-- Competición y Estadio -->
-                                <div class="container-fixture-stadium-competition">
-                                    <div class="container-stadium-competition">
-                                        <span class="material-symbols-outlined">stadium</span>
-                                        <span>' . htmlspecialchars($team['stadium']) . '</span>
-                                    </div>
-                                    <div class="container-stadium-competition">
-                                        <span class="material-symbols-outlined">trophy</span>
-                                        <span>' . htmlspecialchars($team['competition']) . '</span>
-                                    </div>
-                                    
-                                </div>
-
-                                    <!-- Equipos y resultado -->
-                                <div class="container-fixture-result">
-                                    <!-- Local -->
-                                    <div class="container-fixture-result-team-local">
-                                        <img src="' . htmlspecialchars($team['local_team_logo']) . '" alt="Deportivo Cali">
-                                        <span>' . htmlspecialchars($team['local_team']) . '</span>
+                                    <!-- Número de partido -->
+                                    <div class="container-fixture-match-number">
+                                        <span>' . $count . '</span>
                                     </div>
 
-                                    <!-- Resultado -->
-                                    <div class="container-fixture-result-score">
-                                        <span>' . htmlspecialchars($team['result_local']) . '</span>
-                                        <span>:</span>
-                                        <span>' . htmlspecialchars($team['result_visitor']) . '</span>
+                                    <!-- Competición y Estadio -->
+                                    <div class="container-fixture-stadium-competition">
+                                        <div class="container-stadium-competition">
+                                            <span class="material-symbols-outlined">stadium</span>
+                                            <span>' . htmlspecialchars($team['stadium']) . '</span>
+                                        </div>
+                                        <div class="container-stadium-competition">
+                                            <span class="material-symbols-outlined">trophy</span>
+                                            <span>' . htmlspecialchars($team['competition']) . '</span>
+                                        </div>
+                                        
                                     </div>
-                                    
-                                    <!-- Visitante -->
-                                    <div class="container-fixture-result-team-visitor">
-                                        <span>' . htmlspecialchars($team['visitor_team']) . '</span>
-                                        <img src="' . htmlspecialchars($team['visitor_team_logo']) . '" alt="Independiente Medellín">
-                                    </div>
-                                </div>
 
-                                <!-- Ciudad -->
-                                <div class="container-fixture-city">
-                                    <span>' . htmlspecialchars($team['date']) . '</span>
-                                </div>
-                            </div>';
+                                        <!-- Equipos y resultado -->
+                                    <div class="container-fixture-result">
+                                        <!-- Local -->
+                                        <div class="container-fixture-result-team-local">
+                                            <img src="' . htmlspecialchars($team['local_team_logo']) . '" alt="Deportivo Cali">
+                                            <span>' . htmlspecialchars($team['local_team']) . '</span>
+                                        </div>
+
+                                        <!-- Resultado -->
+                                        <div class="container-fixture-result-score">
+                                            <span>' . htmlspecialchars($team['result_local']) . '</span>
+                                            <span>:</span>
+                                            <span>' . htmlspecialchars($team['result_visitor']) . '</span>
+                                        </div>
+                                        
+                                        <!-- Visitante -->
+                                        <div class="container-fixture-result-team-visitor">
+                                            <span>' . htmlspecialchars($team['visitor_team']) . '</span>
+                                            <img src="' . htmlspecialchars($team['visitor_team_logo']) . '" alt="Independiente Medellín">
+                                        </div>
+                                    </div>
+
+                                    <!-- Ciudad -->
+                                    <div class="container-fixture-city">
+                                        <span>' . htmlspecialchars($team['date']) . '</span>
+                                    </div>
+                                </div>'; */
+                            }
+
+                            else if( $filtro == 'all') {
+                                array_push($fixture_filter, $team);
+                            }
+
+                            $count++; 
                         }
+                        return $fixture_filter;
 
-                        else if($team['id_visitor_team'] == $codigo_equipo && $filtro == 'visitor'){
-                            echo '
-                            <!-- Información del Juego -->
-                            <div class="container-fixture-match">
-
-                                <!-- Número de partido -->
-                                <div class="container-fixture-match-number">
-                                    <span>' . $count . '</span>
-                                </div>
-
-                                <!-- Competición y Estadio -->
-                                <div class="container-fixture-stadium-competition">
-                                    <div class="container-stadium-competition">
-                                        <span class="material-symbols-outlined">stadium</span>
-                                        <span>' . htmlspecialchars($team['stadium']) . '</span>
-                                    </div>
-                                    <div class="container-stadium-competition">
-                                        <span class="material-symbols-outlined">trophy</span>
-                                        <span>' . htmlspecialchars($team['competition']) . '</span>
-                                    </div>
-                                    
-                                </div>
-
-                                <!-- Equipos y resultado -->
-                                <div class="container-fixture-result">
-                                    <!-- Local -->
-                                    <div class="container-fixture-result-team-local">
-                                        <img src="' . htmlspecialchars($team['local_team_logo']) . '" alt="Deportivo Cali">
-                                        <span>' . htmlspecialchars($team['local_team']) . '</span>
-                                    </div>
-
-                                    <!-- Resultado -->
-                                    <div class="container-fixture-result-score">
-                                        <span>' . htmlspecialchars($team['result_local']) . '</span>
-                                        <span>:</span>
-                                        <span>' . htmlspecialchars($team['result_visitor']) . '</span>
-                                    </div>
-                                    
-                                    <!-- Visitante -->
-                                    <div class="container-fixture-result-team-visitor">
-                                        <span>' . htmlspecialchars($team['visitor_team']) . '</span>
-                                        <img src="' . htmlspecialchars($team['visitor_team_logo']) . '" alt="Independiente Medellín">
-                                    </div>
-                                </div>
-
-                                <!-- Ciudad -->
-                                <div class="container-fixture-city">
-                                    <span>' . htmlspecialchars($team['date']) . '</span>
-                                </div>
-                            </div>';
-                        }
-
-                        else if( $filtro == 'all') {
-                            echo '
-                            <!-- Información del Juego -->
-                            <div class="container-fixture-match">
-
-                                <!-- Número de partido -->
-                                <div class="container-fixture-match-number">
-                                    <span>' . $count . '</span>
-                                </div>
-
-                                <!-- Competición y Estadio -->
-                                <div class="container-fixture-stadium-competition">
-                                    <div class="container-stadium-competition">
-                                        <span class="material-symbols-outlined">stadium</span>
-                                        <span>' . htmlspecialchars($team['stadium']) . '</span>
-                                    </div>
-                                    <div class="container-stadium-competition">
-                                        <span class="material-symbols-outlined">trophy</span>
-                                        <span>' . htmlspecialchars($team['competition']) . '</span>
-                                    </div>
-                                    
-                                </div>
-
-                                    <!-- Equipos y resultado -->
-                                <div class="container-fixture-result">
-                                    <!-- Local -->
-                                    <div class="container-fixture-result-team-local">
-                                        <img src="' . htmlspecialchars($team['local_team_logo']) . '" alt="Deportivo Cali">
-                                        <span>' . htmlspecialchars($team['local_team']) . '</span>
-                                    </div>
-
-                                    <!-- Resultado -->
-                                    <div class="container-fixture-result-score">
-                                        <span>' . htmlspecialchars($team['result_local']) . '</span>
-                                        <span>:</span>
-                                        <span>' . htmlspecialchars($team['result_visitor']) . '</span>
-                                    </div>
-                                    
-                                    <!-- Visitante -->
-                                    <div class="container-fixture-result-team-visitor">
-                                        <span>' . htmlspecialchars($team['visitor_team']) . '</span>
-                                        <img src="' . htmlspecialchars($team['visitor_team_logo']) . '" alt="Independiente Medellín">
-                                    </div>
-                                </div>
-
-                                <!-- Ciudad -->
-                                <div class="container-fixture-city">
-                                    <span>' . htmlspecialchars($team['date']) . '</span>
-                                </div>
-                            </div>';
-                        }
-
-                        /* else{
-                            echo
-                            '<div class="container-nofound-filter">
-                                No existen resultados para esta búsqueda
-                            </div>
-                            ';
-                            break; 
-                        } */
-
-                        if($count >= 10) {
-                            break; // Limitar a 10 partidos por página
-                        }
-                        $count++; 
                     }
-                }
+                    $filter_data = load_fixture_data($data, $filtro);
+                ?>
 
-                load_fixture_data($data, $filtro);
-                ?> 
+                <!-- Agregar el fixture de filtros -->
+                <script>
+                    const fixtureFilter = <?php echo json_encode($filter_data); ?>;
+                </script>
+
             </div>
 
         </div>

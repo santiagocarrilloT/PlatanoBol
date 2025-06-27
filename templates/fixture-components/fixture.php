@@ -52,3 +52,9 @@ try {
 <!-- Script de header component -->
 <script src="../header-components/expandir-search.js"></script>
 <script src="../header-components/search_fetch.js"></script>
+
+<!-- Script de fixture component -->
+<script >
+    const fixtureData = <?php echo json_encode($data_fixture); ?>;
+</script>
+<script src="./change-section.js"></script>
