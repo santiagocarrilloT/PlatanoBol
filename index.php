@@ -36,7 +36,7 @@
             //Datos del Fixture
             if(isset($_SESSION['fixture']) && $_COOKIE["team_info"] == $_COOKIE['team_id_fixture']){
                 $data_fixture = json_decode($_SESSION['fixture'], true);
-                echo "Datos fixture de la sesión.";
+                //echo "Datos fixture de la sesión.";
             }
             else{
                 $API_FIXTURE_URL = get_API_FIXTURE_URL($TEAM_CODE, 2023);

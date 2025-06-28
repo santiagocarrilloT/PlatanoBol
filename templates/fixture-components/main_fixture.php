@@ -1,5 +1,12 @@
 <?php 
 $filtro = "";
+$data_team = isset($_COOKIE["team_name"]) ? urldecode($_COOKIE["team_name"]) : "";
+$team_logo = "";
+if ($data[0]['id_local_team'] == json_decode($_COOKIE["team_info"],true)){
+    $team_logo = $data[0]['local_team_logo'];
+}else{
+    $team_logo = $data[0]['visitor_team_logo'];
+}
 ?>
 
 <body>
@@ -32,6 +39,16 @@ $filtro = "";
         </div>
    </header>
    <main class="main">
+
+        <!-- Contenedor del equipo -->
+        <div class="container-header-team" style="background-image: url('<?= $team_logo ?>');">
+            <img src="<?= $team_logo ?>" width="80" style="border-radius: 16px;" alt="team logo">
+            <span>
+                <?php echo strtoupper($data_team); ?>
+            </span>
+        </div>
+
+        <!-- Contenedor de los juegos -->
         <div class="container-main">
             <h1 style="text-align: center;">Partidos Jugados</h1>
 

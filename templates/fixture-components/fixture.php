@@ -19,12 +19,7 @@ if (isset($_GET["code"])){
 try {
     if(isset($_SESSION['fixture']) && $_COOKIE["team_info"] == $_COOKIE['team_id_fixture']) {
         $data_fixture = json_decode($_SESSION['fixture'], true);
-        print_r('Datos fixture sesión');
-        /* $data_fixture = [];
-        print_r("ds");
-        foreach ($fixture_team as $data){
-            $data_fixture[] = $data;
-        } */
+        //print_r('Datos fixture sesión');
     } 
 
     else if(isset($_COOKIE["team_info"])){
