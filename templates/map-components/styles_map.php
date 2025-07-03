@@ -253,4 +253,36 @@
     background: transparent;
     color: transparent;
   }
+
+  @media (max-width: 820px) {
+    :root{
+      font-size: 15px;
+    }
+
+    body{
+      width: 94%;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .container-header{
+      width: 100%;
+      padding: 10px;
+    }
+
+    .container-header-team{
+      width: 100%;
+      font-size: 17px;
+    }
+  }
 </style>

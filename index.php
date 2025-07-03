@@ -19,7 +19,7 @@
     }
 
     //Equipos
-    try {
+    /*try {
         if(isset($_COOKIE["team_info"])){
             $TEAM_CODE = json_decode($_COOKIE["team_info"], true);
             $API_FOOTBALLphp_URL = get_API_FOOTBALL_URL($TEAM_CODE, 2023);
@@ -56,9 +56,9 @@
             
     } catch (Exception $e) {
         echo "Error: " . $e->getMessage();
-    }
+    }*/
 
-    /*$API_FIXTURE_URL = get_API_FIXTURE_URL($TEAM_CODE, 2023);
+    $API_FIXTURE_URL = get_API_FIXTURE_URL($TEAM_CODE, 2023);
     $fixture_team = FixtureTeam::data_fixture_curl($API_FIXTURE_URL, $API_KEY, $API_HOST);
     $data_fixture = [];
     foreach ($fixture_team as $data){
@@ -268,7 +268,7 @@
             ]
         ],
     ];
-    $data_forms = explode(" ", $data_team["form"]);*/
+    $data_forms = explode(" ", $data_team["form"]);
     
 ?>
 

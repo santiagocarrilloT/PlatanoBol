@@ -169,6 +169,22 @@ class NewSoccerField extends HTMLElement {
             overflow: hidden;
         }
 
+        @media (max-width: 480px){
+            :host {
+                width: 100%;
+                height: 145px;
+                display: flex;
+                justify-content: center;
+            }
+
+            .players {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: flex;
+            }
+        }
+
           soccer-field-player[number="1"] { grid-area: d1; }
           soccer-field-player[number="2"] { grid-area: d2; }
           soccer-field-player[number="3"] { grid-area: d3; }

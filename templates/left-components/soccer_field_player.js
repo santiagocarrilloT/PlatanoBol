@@ -30,6 +30,13 @@ class soccerFieldPlayer extends HTMLElement {
             color: #000;
             cursor: pointer;
         }
+
+        @media (max-width: 480px){
+          .player{
+            width: 15px;
+            height: 15px; 
+          }
+        }
         `;
   }
 

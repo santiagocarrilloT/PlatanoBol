@@ -374,5 +374,6 @@ function render_fields ($lineups){
             print_r("<div id='lineupArrayID' style='display: none;'> ". htmlspecialchars($lineup_db) ." </div>");
         ?>
     </div>
+    
     <script src="../../templates/left-components/movement_player.js"></script>
 </div>

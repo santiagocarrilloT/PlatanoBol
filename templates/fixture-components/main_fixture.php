@@ -39,7 +39,6 @@ if ($data[0]['id_local_team'] == json_decode($_COOKIE["team_info"],true)){
         </div>
    </header>
    <main class="main">
-
         <!-- Contenedor del equipo -->
         <div class="container-header-team" style="background-image: url('<?= $team_logo ?>');">
             <img src="<?= $team_logo ?>" width="80" style="border-radius: 16px;" alt="team logo">
@@ -100,7 +99,6 @@ if ($data[0]['id_local_team'] == json_decode($_COOKIE["team_info"],true)){
                     <button id="arrowRight" class="button-next-fixture material-symbols-outlined">keyboard_arrow_right</button>
                 </div>
             </div>
-
 
             <!-- Componentes Fixtures -->
             <div id="fixtureContainer" class="container-fixture" >
@@ -188,10 +186,6 @@ if ($data[0]['id_local_team'] == json_decode($_COOKIE["team_info"],true)){
                 </script>
 
             </div>
-
         </div>
-        
-   </main>
-
-   
+   </main> 
 </body>

@@ -21,7 +21,7 @@ class FixtureTeam{
     }
 
     static function data_fixture_curl(string $API_FOOTBALL_URL, string $API_KEY, string $API_HOST): array {
-        $curl = curl_init();
+        /* $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => $API_FOOTBALL_URL,
             CURLOPT_RETURNTRANSFER => true,
@@ -58,9 +58,9 @@ class FixtureTeam{
                 date("H:i:s", strtotime($info["fixture"]["date"])),
                 $info["league"]["logo"],
             );
-        }
+        } */
 
-        /*$fixture_team = [
+        $fixture_team = [
             new self(
                 1127,
                 "Deportivo Cali",
@@ -125,7 +125,7 @@ class FixtureTeam{
                 date("H:i:s", strtotime("2023-10-22 18:00:00")),
                 "https://media.api-sports.io/football/leagues/239.png"
             )
-        ];*/
+        ];
         return $fixture_team;
     }
 

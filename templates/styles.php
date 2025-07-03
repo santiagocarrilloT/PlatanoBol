@@ -27,7 +27,6 @@
     }
 
     /* Header Components */
-
     .header{
         display: flex;
         align-items: center;
@@ -755,7 +754,7 @@
 
     .modal-lineup-content{
         width: 100%;
-        height: 100%;
+        height: fit-content;
         background-color: #0e1116;
         border-radius: 5px; 
         max-width: 500px;
@@ -837,7 +836,7 @@
     .modal-lineup-body{
         display: block;
         width: 100%;
-        height: 100%;
+        height: fit-content;
         background-color: #0e1116;
         padding: 0px 30px 0px 30px;
         margin-top: 15px;
@@ -1039,5 +1038,85 @@
     .button-save:focus{
         outline: none;
         box-shadow: none;
+    }
+
+    /* Diseño responsive */
+    @media (max-width: 820px) {
+        :root{
+            font-size: 15px;
+        }
+
+        body{
+            width: 94%;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .container-header{
+            width: 100%;
+            padding: 10px;
+        }
+        .container{
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 0;
+            margin: 0;
+            gap: 20px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .container-titles{
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container-left{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .container-right{
+            width: 100%;
+        }
+
+        .modal-lineup-content{
+            margin: 0 10px 0 10px;
+        }
+
+        
+    }
+
+    @media (max-width: 420px) {
+        :root{
+            font-size: 13px;
+        }
+        .container-form-lineup{
+            padding: 15px;
+        }
+
+        .input-new-lineup-example div {
+            width: 25px;
+            font-size: 15px;
+        }
+
+        .input-new-lineup input {
+            font-size: 15px;
+            padding: 3px;
+        }
     }
 </style>
